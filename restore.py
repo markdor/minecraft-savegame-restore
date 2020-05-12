@@ -10,7 +10,7 @@ def press(button):
         restore()
 
 def restore():
-    app.setMessage("logger", app.getMessage("logger") + "\nhuhu")
+    app.setLabel("logger", app.getLabel("logger") + "\nhuhu")
 
 # get path for resources
 if getattr(sys, 'frozen', False):
@@ -26,7 +26,8 @@ minecraft_backup_filepath = max(glob.glob(minecraft_backup_dir), key=os.path.get
 minecraft_backup_filename = os.path.basename(minecraft_backup_filepath)
 
 # create a GUI variable called app
-app = gui("Minecraft Savegame Restore", "600x100")
+app = gui("Minecraft Savegame Restore", "600x250")
+app.setResizable(canResize=False)
 app.setIcon(running_dir + "creeper.ico")
 
 app.addLabelEntry("Backup-File")
@@ -35,8 +36,12 @@ app.setEntryState("Backup-File", "disabled")
 
 app.addButtons(["Ok", "Cancel"], press)
 
-app.addMessage("logger", "starting up")
-app.setMessageWidth("logger", 600)
+app.addLabel("logger", "starting up")
+app.getLabelWidget("logger").config(font="Courier 10")
+app.setLabelRelief("logger", "sunken")
+app.setLabelHeight("logger", 10)
+app.setLabelWidth("logger", 60)
+app.setLabelAnchor("logger", "sw")
 
 # start the GUI
 app.go()
