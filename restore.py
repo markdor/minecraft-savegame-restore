@@ -49,14 +49,13 @@ minecraft_backup_filename = os.path.basename(minecraft_backup_filepath)
 
 # create a GUI variable called app
 app = gui("Minecraft Savegame Restore", "600x250")
-app.setResizable(canResize=False)
 app.setIcon(running_dir + "creeper.ico")
 
 app.addLabelEntry("Backup-File")
 app.setEntry("Backup-File", minecraft_backup_filename)
 app.setEntryState("Backup-File", "disabled")
 
-app.addButtons(["Ok", "Exit"], press)
+app.addButtons(["Restore", "Exit"], press)
 
 app.addLabel("logger", "starting up")
 app.getLabelWidget("logger").config(font="Courier 10")
